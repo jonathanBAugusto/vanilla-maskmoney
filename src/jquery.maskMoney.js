@@ -202,6 +202,9 @@
                     if (settings.allowEmpty && value === "") {
                         return;
                     }
+                    if (value.match(/[^0-9,.]/g)) {
+                        value = value.replace(/[^0-9,.-]/g, "");
+                    }
                     var isNumber = !isNaN(value);
 					var decimalPointIndex = isNumber? value.indexOf("."): value.indexOf(settings.decimal);
                     if (settings.precision > 0) {
